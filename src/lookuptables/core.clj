@@ -1,5 +1,6 @@
 (ns lookuptables.core
-  (:use [clojure.core]))
+  (:use [clojure.core])
+  (:use lookuptables.latex))
 
 (defn has-bit?
   "Test to see if nth bit is 1"
