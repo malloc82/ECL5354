@@ -51,3 +51,7 @@
             (var-set show true)
             (print (format "0x%02x " curr-byte))))))))
 
+(defn main-
+  [{:keys [bits filename col]
+    :or   {bits 10 filename "Lookup_table.tex" col 15}}]
+  (latex-gen filename (table-gen bits) :col 15))

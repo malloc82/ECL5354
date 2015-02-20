@@ -3,8 +3,8 @@
   (:require [clojure.string :as str]))
 
 (defn latex-gen
-  [^String filename tables & {:keys [author title]
-                              :or {author "Ritchie Cai" title "Lookup Tables"}}]
+  [^String filename tables & {:keys [author title col]
+                              :or {author "Ritchie Cai" title "Lookup Tables" column 15}}]
   (with-open [w (clojure.java.io/writer (format "resources/%s" filename))]
     (.write w "\\documentclass{assignment}\n")
     (.write w (format "\\title{%s}\n" title))
@@ -13,8 +13,8 @@
     (doseq [n (range (count tables))]
       (let [t (tables n)
             elem_count (count t)
-            col 15
-            row (long (Math/ceil (/ elem_count 15)))]
+            col column
+            row (long (Math/ceil (/ elem_count col)))]
        (latex-table-gen w n t row col)))
     (.write w "\\end{document}\n\n")))
 
