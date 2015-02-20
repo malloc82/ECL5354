@@ -2,9 +2,15 @@
 
 Lookup table generator
 
-## Usage
+## Compile
 
-FIXME
+In project directory:
+lein Compile
+lein uberjar
+
+## Run
+
+java -jar target/lookuptables-0.1.0-SNAPSHOT-standalone.jar
 
 ## License
 
