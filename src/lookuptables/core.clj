@@ -1,6 +1,7 @@
 (ns lookuptables.core
   (:use [clojure.core])
-  (:use lookuptables.latex))
+  (:use lookuptables.latex)
+  (:gen-class))
 
 (defn has-bit?
   "Test to see if nth bit is 1"
@@ -33,7 +34,7 @@
                      (if (nil? (v number)) [k 0] [k 1]))
                    table)]
       (when (== (b 1) 1)
-        (swap! exp_val set-nth-bit (b 0))))
+        (swap! exp_val set-bit (b 0))))
     @exp_val))
 
 (defn print-bytes
@@ -51,7 +52,10 @@
             (var-set show true)
             (print (format "0x%02x " curr-byte))))))))
 
-(defn main-
-  [{:keys [bits filename col]
-    :or   {bits 10 filename "Lookup_table.tex" col 15}}]
-  (latex-gen filename (table-gen bits) :col 15))
+;; (defn -main
+;;   [{:keys [bits filename col]
+;;     :or   {bits 10 filename "Lookup_table.tex" col 15}}]
+;;   (latex-gen filename (table-gen bits) :col 15))
+
+(defn -main [& args]
+  (latex-gen "LookupTable.tex" (table-gen 10) :col 15))
