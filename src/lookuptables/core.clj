@@ -21,10 +21,10 @@
   [^Long bits]
   (let [max_val (long (dec (Math/pow 2 bits)))
         tables (transient (zipmap (range bits) (repeat bits (sorted-set))))]
-    (doseq [x (range (long (Math/pow 2 bits)))]
-      (doseq [n (range bits)]
-        (when (has-bit? x n)
-          (assoc! tables n (conj (tables n) x)))))
+    (doseq [x (range (long (Math/pow 2 bits)))
+            n (range bits)]
+      (when (has-bit? x n)
+        (assoc! tables n (conj (tables n) x))))
     (persistent! tables)))
 
 (defn guess-number
@@ -38,19 +38,21 @@
     @exp_val))
 
 (defn print-bytes
-  [^Long number & {:keys [full]
-                   :or   {full false}}]
-  (let [mask (bit-shift-left 0xff 56)]
-    (with-local-vars [show full]
-      (doseq [n (reverse (range 8))]
-        (let [curr-byte (unsigned-bit-shift-right
-                         (bit-and number (unsigned-bit-shift-right mask (* (- 7 n) 8)))
-                         (* 8 n))]
-          (when (or (not (zero? curr-byte))
-                    @show
-                    (== n 0))
-            (var-set show true)
-            (print (format "0x%02x " curr-byte))))))))
+  [^Long number & {:keys [full] :or {full false}}]
+  (loop [mask (bit-shift-left 0xff 56)
+         n    7
+         show full]
+    (let [curr-byte (bit-and mask number)]
+      ;; (print (format "test: 0x%02x\n" curr-byte))
+      (if (or (not= curr-byte 0)
+              show
+              (zero? n))
+        (do
+          (print (format "0x%02x " (unsigned-bit-shift-right  curr-byte (* n 8))))
+          (if (zero? n)
+            (println)
+            (recur (unsigned-bit-shift-right mask 8) (dec n) true)))
+        (recur (unsigned-bit-shift-right mask 8) (dec n) false)))))
 
 ;; (defn -main
 ;;   [{:keys [bits filename col]
