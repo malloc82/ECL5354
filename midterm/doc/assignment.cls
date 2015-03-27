@@ -51,7 +51,7 @@ vmargin=1in
 
 \newcommand*\rfrac[2]{{}^{#1}\!/_{#2}}
 \newcommand{\eqnote}[1]{\mbox{\hspace{12pt}#1\hspace{12pt}}}
-\newcommand{\eqtext}[1]{\mbox{\hspace{12pt}#1\hspace{12pt}}}
+% \newcommand{\eqtext}[1]{\mbox{\hspace{12pt}#1\hspace{12pt}}}
 \newcommand{\eqtextbegin}[1]{\mbox{#1\hspace{12pt}}}
 \newcommand{\eqtextend}[1]{\mbox{\hspace{12pt}#1\hspace{3pt}}}
 
@@ -69,6 +69,7 @@ vmargin=1in
 \newcommand{\f}{\frac}
 \newcommand{\ol}{\overline}
 \newcommand{\OP}{\operatorname}
+\newcommand\eqtext[1]{\stackrel{\mathllap{\normalfont\tiny\mbox{#1}}}{=}}
 
 %% ==========================================
 %% Indentation:

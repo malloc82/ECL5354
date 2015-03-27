@@ -1,6 +1,49 @@
 \textbf{2.} A satellite orbits the sun such that, from the perspective of the earth, it has a period of $D$ days. Over this period, there is possible communication for $\alpha D$ days followed by $(1-\alpha ) D$ days of blackout when the sun is between the satellite and earth. The parameter $\alpha$ can be viewed as a duty cycle. Let $\lambda $ denote the average number of messages per day broadcast by the satellite. Over any time interval $T$ the number of messages broadcast by the satellite is therefore a Poisson random variable with a mean of $\lambda T $. During blackout, however, any messages transmitted by the satellite will not be received on earth.
 \begin{enumerate}[(a)]
-\item Evaluate the probability mass function for $X=$ the number of messages received on earth in a period of $D$ days.
-\item What is the characteristic function of $X$?
-\item What is the mean and the variance of $X$?
+\item Evaluate the probability mass function for $X=$ the number of messages received on earth in a period of $D$ days.\\
+  \textbf{Solution:}\\
+  Let $Y$ be the random variable of the number of messages satellite sent in D days:
+  \begin{align*}
+    f_Y(y) & = \df{(\lambda D)^y e^{-\lambda D}}{y!}
+  \end{align*}
+  Then
+  \begin{align*}
+    f_X(x) & = \alpha f_Y(x) \\
+           & = \alpha \df{(\lambda D)^x e^{-\lambda D}}{x!}
+  \end{align*}
+  \hfill $\blacksquare$
+
+\item What is the characteristic function of $X$?\\
+  \textbf{Solution:}\\
+  \begin{align*}
+    % \Phi_X(u) & = \exp(\lambda \alpha D (e^{-j2\pi u} - 1)) \\
+    \Phi_X(u) & = \int_{-\infty}^{\infty} \alpha \df{(\lambda D)^x e^{-\lambda D}}{x!} e^{-j2\pi ux}dx \\
+              & = \alpha e^{-\lambda D} \int_{-\infty}^{\infty} \df{(\lambda D)^x}{x!} e^{-j2\pi ux}dx
+  \end{align*}
+  Since $x \in \mathbb{N}$, we can write:s
+  \begin{align*}
+    \Phi_X(u) & = \alpha e^{-\lambda D} \sum_0^{\infty} \df{(\lambda D)^x}{x!} e^{-j2\pi ux} \\
+              & = \alpha e^{-\lambda D} \sum_0^{\infty} \df{(\lambda D e^{-j2\pi u})^x}{x!} \\
+              & = \alpha e^{-\lambda D} e^{\lambda D e^{-j2\pi u}} & \text{(Taylor series)}\\
+              & = \alpha e^{\lambda D (e^{-j2\pi u} - 1)}
+  \end{align*}
+  \hfill $\blacksquare$
+
+\item What is the mean and the variance of $X$? \\
+  \textbf{Solution:}\\
+  \begin{align*}
+    \ol{X}    & = \df{1}{-j2\pi} \df{d}{du} \Phi_X(0)\\
+              & = \df{1}{-j2\pi} \left. \df{d}{du} \alpha e^{\lambda D (e^{-j2\pi u} - 1)} \right|_{u=0}\\
+              & = \df{1}{\cancel{-j2\pi}} (\cancel{-j2\pi}\lambda D ) \alpha e^{\lambda D (e^{-j2\pi 0} - 1)}\\
+              & = \lambda D \alpha \\
+    \Psi_X(u) & = \ln \Phi_X(u) = \ln \alpha e^{\lambda D (e^{-j2\pi u} - 1)} \\
+              & = \ln \alpha + \lambda D (e^{-j2\pi u} - 1) \\
+    \sigma_X^2 & = \df{-1}{(2\pi)^2} \left( \df{d}{du} \right)^2 \Psi_X(0) \\
+              & = \df{-1}{(2\pi)^2} \left. \left( \df{d}{du} \right)^2
+                                                  (\ln \alpha + \lambda D (e^{-j2\pi u} - 1)) \right|_{u=0} \\
+              & = \df{-1}{(2\pi)^2} (-j2\pi)^2 \lambda D e^{-j 2\pi 0} \\
+              & = \lambda D
+  \end{align*}
+  \hfill $\blacksquare$
 \end{enumerate}
+\vspace{.5in}
