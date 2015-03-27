@@ -1,5 +1,5 @@
-\NeedsTeXFormat{LaTeX2e} 
-\ProvidesClass{assignment}[2014/01/28 Assignment Class] 
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{assignment}[2014/01/28 Assignment Class]
 % \LoadClass{scrreprt}
 % \LoadClass{report}
 % \LoadClass{scrartcl}
@@ -24,7 +24,7 @@ vmargin=1in
 
 \usepackage{fancyhdr}
 \pagestyle{fancy} % enable fancy page style
-\renewcommand{\headrulewidth}{0.2pt} % comment if you want the rule 
+\renewcommand{\headrulewidth}{0.2pt} % comment if you want the rule
 \fancyhf{} % clear header and footer
 \fancyhead[L]{\@title} % section title on the left
 \fancyhead[R]{\@author}   % page number
@@ -71,11 +71,11 @@ vmargin=1in
 \newcommand{\OP}{\operatorname}
 
 %% ==========================================
-%% Indentation: 
+%% Indentation:
 %% ==========================================
 
 % Make the first line of all sections etc., be indented by the usual paragraph indentation.
-% \usepackage{indentfirst} 
+% \usepackage{indentfirst}
 
 % used to remove global indent at beginning of paragraph
 % parskip will also add a small spacing between paragraphs
@@ -83,7 +83,7 @@ vmargin=1in
 \usepackage{parskip}
 
 %% ==========================================
-%% Color setting: 
+%% Color setting:
 %% ==========================================
 
 \usepackage[usenames]{color} % color
@@ -93,7 +93,7 @@ vmargin=1in
 % \MatLab{title}{label}{file}
 
 %% ==========================================
-%% Source code listing: 
+%% Source code listing:
 %% ==========================================
 
 \newcommand{\MatLab}[3]{
@@ -137,7 +137,7 @@ vmargin=1in
 % \SourceCode{language}{caption}{label}{file_path}
 \newcommand{\SourceCode}[4]{
   % #1 = language, usually first letter is in upper case
-  % #2 = caption 
+  % #2 = caption
   % #3 = label
   % #4 = path
   \lstset{language=#1}
@@ -152,7 +152,7 @@ vmargin=1in
     extendedchars=true,         %
     breaklines=true,            % Zeilen werden Umgebrochen
     keywordstyle=\color{red},
-    frame=b,         
+    frame=b,
     % keywordstyle=[1]\textbf,    % Stil der Keywords
     % keywordstyle=[2]\textbf,    %
     % keywordstyle=[3]\textbf,    %
@@ -166,7 +166,7 @@ vmargin=1in
     framexbottommargin=4pt,
     backgroundcolor=\color{listinggray},
     % backgroundcolor=\color{lightgray},
-    showstringspaces=false      % Leerzeichen in Strings anzeigen ?        
-  }  
+    showstringspaces=false      % Leerzeichen in Strings anzeigen ?
+  }
   \lstinputlisting[caption={#2},label={#3}]{#4}
 }

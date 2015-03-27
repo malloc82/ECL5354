@@ -1,18 +1,18 @@
-# lookuptables
+## Homework: generate a lookup table
 
 Lookup table generator
 
-## Compile
+### Compile
 
 In project directory:
 lein Compile
 lein uberjar
 
-## Run
+### Run
 
 java -jar target/lookuptables-0.1.0-SNAPSHOT-standalone.jar
 
-## License
+### License
 
 Copyright © 2015 FIXME
 
