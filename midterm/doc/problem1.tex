@@ -1,0 +1,78 @@
+\textbf{1.} Let's assume a man wearing a boy scout leader's uniform has a son.
+In a conversation, you learn that he has two children.
+
+\begin{enumerate}[(a)]
+\item What is the probability that the man has two sons? \footnote{Assume the chances of having a boy or a girl at 50-50.} (Hint: It is not $\frac{1}{2}$).\\
+  \textbf{Solution:}\\
+  The probability table is given as follows:
+
+  \begin{tabular}{| c | c | c | c |}
+    \hline
+    First                 & Second  &              & \multirow{2}{*}{Probability}\\
+    born                  & born    &              & \\
+    \hline
+    \multirow{2}{*}{boy}  & boy     & \Checkmark   & $1/3$ \\
+    \cline{2-4}
+                          & girl    &  \Checkmark  & $1/3$\\
+    \hline
+    \multirow{2}{*}{girl} & boy     &  \Checkmark  & $1/3$\\
+    \cline{2-4}
+                          & girl    & \XSolidBrush & \\
+    \hline
+  \end{tabular}
+
+  From the table we can see that the probability of two boys given that we know he has one boy is $1/3$.
+  \hfill $\blacksquare$ \\
+\item In addition to this information, the man says his son was born between noon and midnight.
+  \footnote{We assume the chances of being born between noon and midnight 50-50.}
+  Show that this additional information\footnote{If the man has two sons, we interpret this to mean that at
+    least one of his sons was born between noon and midnight. Maybe both.}
+  increases the probability that both of the man's sons are male.\\
+  \textbf{Solution:}\\
+  The probability table is given as follows, morning represent after mid night before noon, and evening represent
+  otherwise, so he meant his son is borning in the \underline{evening} in this morning / evening term.
+
+  \begin{tabular}{| c | c | c | c | c | c |}
+    \hline
+    first                 & time                     & second                & time    &    & \multirow{2}{*}{Probability}\\
+    born                  &                          & born                  &         &    & \\
+    \hline
+    \multirow{8}{*}{boy}  & \multirow{4}{*}{morning} & \multirow{2}{*}{boy}  & morning & \XSolidBrush & \\
+    \cline{4-6}
+                          &                          &                       & evening & \Checkmark & $1/7$\\
+    \cline{3-6}
+                          &                          & \multirow{2}{*}{girl} & morning & \XSolidBrush & \\
+    \cline{4-6}
+                          &                          &                       & evening & \XSolidBrush & \\
+    \cline{2-6}
+                          & \multirow{4}{*}{evening} & \multirow{2}{*}{boy}  & morning & \Checkmark & $1/7$\\
+    \cline{4-6}
+                          &                          &                       & evening & \Checkmark & $1/7$\\
+    \cline{3-6}
+                          &                          & \multirow{2}{*}{girl} & morning & \Checkmark & $1/7$\\
+    \cline{4-6}
+                          &                          &                       & evening & \Checkmark & $1/7$\\
+    \hline
+    \multirow{8}{*}{girl} & \multirow{4}{*}{morning} & \multirow{2}{*}{boy}  & morning & \XSolidBrush & \\
+    \cline{4-6}
+                          &                          &                       & evening & \Checkmark & $1/7$\\
+    \cline{3-6}
+                          &                          & \multirow{2}{*}{girl} & morning & \XSolidBrush & \\
+    \cline{4-6}
+                          &                          &                       & evening & \XSolidBrush & \\
+    \cline{2-6}
+                          & \multirow{4}{*}{evening} & \multirow{2}{*}{boy}  & morning & \XSolidBrush & \\
+    \cline{4-6}
+                          &                          &                       & evening & \Checkmark & $1/7$\\
+    \cline{3-6}
+                          &                          & \multirow{2}{*}{girl} & morning & \XSolidBrush & \\
+    \cline{4-6}
+                          &                          &                       & evening & \XSolidBrush & \\
+    \hline
+  \end{tabular}
+
+  From the table above we can see that out of 7 possible outcomes, three of them are 2 boys
+  and at least one of them is born in the evening, so the probability is $3/7$. \hfill $\blacksquare$
+\end{enumerate}
+\vspace{0.5in}
+
