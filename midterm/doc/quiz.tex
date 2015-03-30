@@ -17,11 +17,33 @@
   \end{equation}
   \begin{enumerate}
   \item What is the value of $\alpha$ in \eqref{BaylorR}?
-    \label{ItemMm}
-  \item What is the mean of $X$ in terms of $m$ and $\lambda$? (Use your answer in \ref{ItemMm} so that $\alpha$ does not appear in your answer.)
-  \item What is the variance of $X$ in terms of $m$ and $\lambda$?
+    \label{ItemMm}\\
+    \textbf{Solution:}\\
+    \begin{align*}
+      \Phi_X (0) & = \left( \frac{\alpha }{\lambda + j2\pi u}    \right)^m = 1 \\
+        \alpha   & = \lambda + j2 \pi 0 = \lambda
+    \end{align*}
+  \item What is the mean of $X$ in terms of $m$ and $\lambda$? (Use your answer in \ref{ItemMm} so that $\alpha$ does not appear in your answer.) \\
+    \textbf{Solution:}\\
+    \begin{align*}
+      \Psi_X(u) & = \ln \Phi_X(u) = \ln \left( \frac{\alpha }{\lambda + j2\pi u}    \right)^m \\
+                & = m \ln\left( \frac{\alpha }{\lambda + j2\pi u}    \right) \\
+                & = m\ln\alpha - m\ln(\lambda + j2\pi u) \\
+      \ol{X} & = \df{1}{-j2\pi}\df{d}{du}\Psi_X(0) \\
+             & = \left. \df{1}{-j2\pi}\df{d}{du}(m\ln\alpha - m\ln(\lambda + j2\pi u)) \right|_{u=0} \\
+             & = \left. \df{m}{-\cancel{j2\pi}} \left( - \df{\cancel{j2\pi}}{\lambda + j2\pi u} \right) \right|_{u=0} \\
+             & = \df{m}{\lambda}
+    \end{align*}
+  \item What is the variance of $X$ in terms of $m$ and $\lambda$?\\
+    \textbf{Solution:}\\
+    \begin{align*}
+      \sigma_X^2 & = \df{-1}{(2\pi)^2}\left( \df{d}{du} \right)^2 \Psi_X(0) \\
+                & = \left. \df{-1}{(2\pi)^2} m \df{d}{du} \left( - \df{j2\pi}{\lambda + j2\pi u} \right) \right|_{u=0} \\
+                & = \left. \df{-j2\pi}{(2\pi)^2}j2\pi m \left( \df{1}{\lambda + j2\pi u} \right)^2 \right|_{u=0} \\
+                & = \df{m}{\lambda^2}
+    \end{align*}
   \end{enumerate}
 
-  {\bf Solution}:
-
 \end{enumerate}
+\vspace{.5in}
+
