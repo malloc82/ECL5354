@@ -171,3 +171,40 @@ vmargin=1in
   }
   \lstinputlisting[caption={#2},label={#3}]{#4}
 }
+
+\newcommand{\CodeSnippet}[6]{
+  % #1 = language, usually first letter is in upper case
+  % #2 = caption
+  % #3 = label
+  % #4 = path
+  \lstset{language=#1}
+  \lstset{
+    commentstyle=\color{orange}\textit,
+    basicstyle=\footnotesize\ttfamily, % Standardschrift
+    % numbers=left,               % Ort der Zeilennummern
+    numberstyle=\tiny,          % Stil der Zeilennummern
+    % stepnumber=2,               % Abstand zwischen den Zeilennummern
+    numbersep=5pt,              % Abstand der Nummern zum Text
+    tabsize=2,                  % Groesse von Tabs
+    extendedchars=true,         %
+    breaklines=true,            % Zeilen werden Umgebrochen
+    keywordstyle=\color{red},
+    frame=b,
+    % keywordstyle=[1]\textbf,    % Stil der Keywords
+    % keywordstyle=[2]\textbf,    %
+    % keywordstyle=[3]\textbf,    %
+    % keywordstyle=[4]\textbf,   \sqrt{\sqrt{}} %
+    stringstyle=\color{blue}\ttfamily, % Farbe der String
+    showspaces=false,           % Leerzeichen anzeigen ?
+    showtabs=false,             % Tabs anzeigen ?
+    xleftmargin=17pt,
+    framexleftmargin=17pt,
+    framexrightmargin=5pt,
+    framexbottommargin=4pt,
+    backgroundcolor=\color{listinggray},
+    % backgroundcolor=\color{lightgray},
+    showstringspaces=false      % Leerzeichen in Strings anzeigen ?
+  }
+  \lstinputlisting[caption={#2},label={#3}, firstline={#5}, lastline={#6}]{#4}
+}
+
