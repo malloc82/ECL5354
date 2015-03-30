@@ -20,7 +20,7 @@ Y2 = zeros(size(X2));
 for i=1:length(X1)
     Y1(i) = 1 - (sigma / X1(i))^2;
 end
-for i=1:length(X1)
+for i=1:length(X2)
     Y2(i) = 1 - (sigma / X2(i))^2;
 end
 
