@@ -1,0 +1,3 @@
+
+origin = 'lena.png';
+

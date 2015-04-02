@@ -4,4 +4,11 @@ Generate a movie of stochastic resonance for a black-and-white image. Do separat
 $$ Y_n = (1-\alpha) X_n + \alpha Y_{n-1}$$
 for various decay factors, $0<\alpha<1$.
 
-This all or nothing extra credit will be due on April 1. It will count as two test problems.
+This all or nothing extra credit will be due on April 1. It will count as two test problems.\\
+\textbf{Solution:}\\
+
+The following functions are what I used to generate movies for stochastic resource and decaying memory.
+\SourceCode{matlab}{Function return noisy image and thresholded noisy image}{lst:extra_a}{../src/matlab/sr.m}
+\SourceCode{matlab}{Function used to generate a series of noisy images given alpha, threshold, and desired number of images}
+                   {lst:extra_b}{../src/matlab/sr_threshold.m}
+\SourceCode{matlab}{Function used to generate a series decay images}{lst:extra_c}{../src/matlab/sr_decay.m}
