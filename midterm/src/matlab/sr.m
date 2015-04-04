@@ -1,6 +1,6 @@
 function [B O] = sr(I, alpha, T)
-    noise = rand(size(I)).*255;
-    O = uint8((1 - alpha)*noise + alpha*double(I));
+    noise = (rand(size(I)) - 0.5)*255*(2*alpha);
+    O = uint8(double(I) + noise);
     B = im2bw(O, T);
 end
 
