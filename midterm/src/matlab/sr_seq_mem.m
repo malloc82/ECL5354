@@ -3,11 +3,14 @@ function sr_seq_mem(filename, alpha, T, count, memory)
     foldername = sprintf('%s/alpha=%.3f,memory=%.2f', output_dir, alpha, memory);
     mkdir(foldername);
     im = imread(filename);
-    I = im;
     for i=1:count
-        [B O] = sr((1 - memory)*double(im) + memory*double(I), alpha, T);
+        [~, O] = sr(double(im), alpha);
+        if (i == 1)
+            I = O;
+        end
+        I = (1 - memory)*O + memory*I;
+        B = im2bw(uint8(I), T);
         imwrite(B, sprintf('%s/image_%04d.png', foldername, i), 'PNG');
-        I = O;
     end
     fprintf('OK\n');
 end
