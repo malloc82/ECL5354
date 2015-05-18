@@ -1,0 +1,123 @@
+\textbf{4.} Let $X(t)$ be the Poisson counting process with parameter $\lambda$.
+  \begin{enumerate}
+  \item Let
+    $$ Y(t) = X(t) - \lambda t .$$
+    Evaluate the mean and autocorrelation of $Y(t)$.\\
+    \textbf{Answer:}\\
+    \begin{align*}
+      X(t) & = \df{e^{-\lambda t}(\lambda t)^k}{k!}\\
+      \shortintertext{Mean:}
+      E[Y(t)] & = E[X(t) - \lambda t] = E[X(t)] - E[\lambda t] = \lambda t - \lambda t = 0 \\
+    \end{align*}
+    Let $\tau > t$, since random variable $\textbf{x}(t)$ and $\textbf{x}(\tau) - \textbf{x}(t)$ are independent, we have
+    \begin{align*}
+      E[\textbf{x}(t)(\textbf{x}(\tau) - \textbf{x}(t))] & = E[\textbf{x}(t)]E[\textbf{x}(\tau) - \textbf{x}(t)] \\
+                                                         & = \lambda t (\lambda \tau - \lambda t) \\
+                                                         & = \lambda^2t\tau - \lambda^2t^2
+    \end{align*}
+    Thus
+    \begin{align*}
+      E[X(t)X(\tau)] & = E[X(t)(X(t) + X(\tau) - X(t))] \\
+                     & = E[X^2(t) + X(t)(X(\tau) - X(t))] \\
+                     & = \lambda^2t^2  + \lambda t + \lambda^2t\tau - \lambda^2t^2\\
+                     & = \lambda t + \lambda^2t\tau \\
+      R(t, \tau) & = E[Y(t)Y(\tau)] = E[(X(t) - \lambda t)(X(\tau) - \lambda \tau)] \\
+                     & = E[X(t)X(\tau)] - \lambda \tau E[X(t)] - \lambda t E[X(\tau)] + \lambda^2 t \tau \\
+                     & = \lambda t + \lambda^2 t \tau - \lambda^2 \tau t - \lambda^2 t \tau + \lambda^2 t \tau \\
+                     & = \lambda t
+    \end{align*}
+    $\hfill\blacksquare$
+  \item Let
+    $$Z(t) = \frac{dY(t)}{dt}.$$
+    Evaluate the mean and autocorrelation of $Z(t)$.\\
+    \textbf{Answer:}\\
+    \begin{align*}
+      e^{\lambda} & = \sum_{k=1}^{\infty} k(k-1)(k-2) \df{\lambda^{k-3}}{k!}
+                    = \sum_{k=1}^{\infty} (k^3 - 3k^2 + 2k) \df{\lambda^{k-3}}{k!} \\
+                  & = \df{1}{\lambda^3} \left[ \sum_{k=1}^{\infty} k^3 \df{\lambda^k}{k!}
+                    - 3 \sum_{k=1}^{\infty} k^2 \df{\lambda^k}{k!}
+                    + 2 \sum_{k=1}^{\infty} k \df{\lambda^k}{k!} \right] \\
+                  & = \df{1}{\lambda^3} \left[ \sum_{k=1}^{\infty} k^3 \df{\lambda^k}{k!}
+                    -3e^{\lambda} (\lambda^2 + \lambda) + 2e^{\lambda}\lambda \right] \\
+      \sum_{k=1}^{\infty} k^3 \df{\lambda^k}{k!}
+                  & = \lambda^3e^{\lambda} + 3e^{\lambda}\lambda^2 + e^{\lambda}\lambda
+                    = e^{\lambda}(\lambda^3 + 3\lambda^2 + \lambda)
+    \end{align*}
+    \begin{align*}
+      Z(t) & = \df{dY(t)}{dt} = \df{dX(t)}{dt} - \lambda
+             = \df{d}{dt} \left(\df{e^{-\lambda t} (\lambda t)^k}{k!}\right) - \lambda \\
+           & = -\lambda \df{e^{-\lambda t} (\lambda t)^k}{k!} +
+             \lambda \df{e^{-\lambda t} (\lambda t)^{k-1}}{(k-1)!} - \lambda \\
+      \shortintertext{Let:}
+      F(t) & = \df{dX(t)}{dt}
+             = -\lambda \df{e^{-\lambda t} (\lambda t)^k}{k!} + \lambda \df{e^{-\lambda t} (\lambda t)^{k-1}}{(k-1)!} \\
+      \shortintertext{Mean:}
+      E[F(t)] & = \sum_{k=1}^{\infty} k \left( \lambda \df{e^{-\lambda t} (\lambda t)^{k-1}}{(k-1)!}
+                -\lambda \df{e^{-\lambda t} (\lambda t)^k}{k!} \right) \\
+           & = e^{-\lambda t} \left( \sum_{k=1}^{\infty} k \df{\lambda (\lambda t)^{k-1}}{(k-1)!}
+             - \lambda \sum_{k=1}^{\infty} k \df{(\lambda t)^k}{k!}\right) \\
+           & = e^{-\lambda t} \left( \df{1}{t}\sum_{k=1}^{\infty} k^2 \df{(\lambda t)^{k}}{k!}
+             - \lambda \sum_{k=1}^{\infty} k \df{(\lambda t)^k}{k!}\right) \\
+           & = e^{-\lambda t} \left(  \df{1}{t} e^{\lambda t}(\lambda^2 t^2 + \lambda t) - e^{\lambda t}\lambda^2 t\right) \\
+           & = \lambda^2 t - \lambda^2 + \lambda \\
+      \shortintertext{also}
+      E[F^2(t)] & = \sum_{k=1}^{\infty} k^2 \left( \lambda \df{e^{-\lambda t} (\lambda t)^{k-1}}{(k-1)!}
+                -\lambda \df{e^{-\lambda t} (\lambda t)^k}{k!} \right) \\
+           & = e^{-\lambda t} \left( \sum_{k=1}^{\infty} k^2 \df{\lambda (\lambda t)^{k-1}}{(k-1)!}
+             - \lambda \sum_{k=1}^{\infty} k^2\df{(\lambda t)^k}{k!}\right) \\
+           & = e^{-\lambda t} \left( \df{1}{t}\sum_{k=1}^{\infty} k^3 \df{(\lambda t)^{k}}{k!}
+             - \lambda \sum_{k=1}^{\infty} k^2 \df{(\lambda t)^k}{k!}\right) \\
+           & = e^{-\lambda t} \left(  \df{1}{t} e^{\lambda t}(\lambda^3t^3 + 3\lambda^2t^2 + \lambda t)
+             - e^{\lambda t}\lambda (\lambda^2 t^2 + \lambda t)\right) \\
+           & = \lambda^3t^2 + 3 \lambda^2t + \lambda - \lambda^3t - \lambda^2 \\
+           & = \lambda^3t^2 - \lambda^3t + 3 \lambda^2t - \lambda^2 + \lambda \\
+      \shortintertext{So, we have}
+      E[Z(t)] & = E\left[ F(t) - \lambda \right] = E[F(t)] - \lambda = \lambda^2 t - \lambda^2\\
+      \shortintertext{Let $\tau > t$}
+      E[F(t)F(\tau)] & = E[F(t)(F(t) + F(\tau) - F(t))] \\
+           & = E[F^2(t)] + E[F(t)]E[F(\tau) - F(t)] \\
+           & = \lambda^3t^2 - \lambda^3t + 3 \lambda^2t - \lambda^2 + \lambda
+             + (\lambda^2 t - \lambda^2 + \lambda)
+             (\lambda^2 t - \lambda^2 + \lambda - \lambda^2 t + \lambda^2 - \lambda) \\
+           & = \lambda^3t^2 - \lambda^3 t + 3 \lambda^2t - \lambda^2 + \lambda
+             + (\lambda^2 t - \lambda^2 + \lambda)(\lambda^2 \tau - \lambda^2 t) \\
+           & = \lambda^3 t^2 - 2 \lambda^3 t + 3 \lambda^2 t - \lambda^2 + \lambda +
+             \lambda^4 t \tau - \lambda^4 t^2 - \lambda^4 \tau + \lambda^4 t + \lambda^3 \tau\\
+           & = \lambda^4 t \tau - \lambda^4 t^2 - \lambda^4 \tau + \lambda^4 t
+             + \lambda^3 t^2 - 2 \lambda^3 t + \lambda^3 \tau + 3 \lambda^2 t - \lambda^2 + \lambda \\
+      \shortintertext{}
+      R(t, \tau) & = E[Z(t)Z(\tau)] = E[(F(t) - \lambda)(F(\tau) - \lambda)] \\
+           & = E[F(t)F(\tau) - \lambda F(t) - \lambda F(\tau) + \lambda^2] \\
+           & = \lambda^4 t \tau - \lambda^4 t^2 - \lambda^4 \tau + \lambda^4 t
+             + \lambda^3 t^2 - 2 \lambda^3 t + \lambda^3 \tau + 3 \lambda^2 t - \lambda^2 + \lambda \\
+           & \quad - \lambda (\lambda^2 t - \lambda^2 + \lambda) - \lambda (\lambda^2 \tau - \lambda^2 + \lambda) +\lambda^2\\
+           & = \lambda^4 t \tau - \lambda^4 t^2 - \lambda^4 \tau + \lambda^4 t
+             + \lambda^3 t^2 - 3 \lambda^3 t + 3 \lambda^2 t + \lambda \\
+    \end{align*} $\hfill\blacksquare$
+    % \begin{align*}
+    %   e^{\lambda} & = \sum_{k=1}^{\infty} k(k-1)(k-2)(k-3) \df{\lambda^{k-4}}{k!}
+    %                 = \sum_{k=1}^{\infty} (k^4 - 6k^3 + 11k^2 - 6k) \df{\lambda^{k-4}}{k!} \\
+    %               & = \df{1}{\lambda^4}\left[ \sum_{k=1}^{\infty}k^4\df{\lambda^k}{k!}
+    %                 - 6 e^{\lambda}(\lambda^3 + 3\lambda^2 + \lambda)
+    %                 + 11 e^{\lambda}(\lambda^2 + \lambda)
+    %                 - 6 e^{\lambda}\lambda \right] \\
+    %   \sum_{k=1}^{\infty} k^4 \df{\lambda^k}{k!}
+    %               & = e^{\lambda}(\lambda^4 + 6\lambda^3 + 18 \lambda^2 + 6\lambda - 11 \lambda^2 - 11 \lambda
+    %                 + 6 \lambda)
+    %                 = e^{\lambda}(\lambda^4 + 6\lambda^3 + 7 \lambda^2 + \lambda)
+    % \end{align*}
+  \item Fill in the following table indicating the properties of $X(t)$, $Y(t)$ and $Z(t)$. Each block should contain either a `yes' or a `no'.
+
+    \begin{tabular}{|r||c|c|c|}\hline
+      $\downarrow$ Property $|$ Process $\rightarrow$                     & $X(t)$    &  $Y(t)$   & $Z(t)$    \\ \hline
+      Zero Mean                                                           & No        &  Yes      & No        \\ \hline
+      Wide Sense Stationary                                               & No        &  Yes      & No        \\ \hline
+      White Noise                                                         &           &           &           \\ \hline
+      Gaussian White Noise                                                &           &           &           \\ \hline
+    \end{tabular}
+  \end{enumerate}
+
+
+
+
+

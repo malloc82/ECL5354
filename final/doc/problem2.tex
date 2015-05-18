@@ -1,0 +1,56 @@
+\textbf{2.} Consider the stochastic process
+  $$X(t)= \cos (2 \pi t + \Theta  )$$
+  where $\Theta$ is  a random variable uniform on $(-\pi, \pi)$.
+  \begin{enumerate}
+  \item Is $X(t)$ WSS?
+    \begin{enumerate}
+    \item If not, why?
+    \item If so, what is the average power of $X(t)$ on the interval $0\leq u \leq 1.5$? On $1.5\leq u \leq 27$?
+    \end{enumerate}
+  \item Is $X(t)$ stationary in the strict sense?
+  \item If $X(t)$ mean ergodic?
+  \end{enumerate}
+  Explain each answer. \\
+
+  \textbf{Solution:}\\
+
+  \begin{align*}
+    \mu = E[X(t)] & = E[\cos (2 \pi t + \Theta  )] \\
+                  & = \int_{-\pi}^{\pi} \cos (2 \pi t + \theta  ) \df{1}{2 \pi} d\theta \\
+                  & = \df{1}{2 \pi} \int_{-\pi}^{\pi} \cos (2 \pi t + \theta  ) d\theta  = 0 \\
+    \text{autocorrelation} & = E[\textbf{x($t$)x($\tau$)}]
+                             = E[\cos (2 \pi t + \theta  )\cos (2 \pi \tau + \theta  )] \\
+                  & = \frac{1}{2}E[\cos (2 \pi (t - \tau)) + \cos (2\pi t + 2\pi \tau + 2\theta)]\\
+    \shortintertext{Since:}
+    E[\cos (2\pi t + 2\pi \tau + 2\theta)]
+                  & = \df{1}{2\pi} \int_{-\pi}^{\pi} \cos (2\pi t + 2\pi \tau + 2\theta) d\theta = 0 \\
+    \shortintertext{We have:}
+    E[\textbf{x($t$)x($\tau$)}] & = \df{1}{2}\cos(2\pi (t - \tau)) = R(t - \tau)
+  \end{align*}
+
+  \textbf{Answer for (1):}
+  Since $E[X(t)]$ is constant, and $E[X^2(t)] = 0$. $X(t)$ is WSS.
+  \begin{align*}
+    \ol{P} = E[X^2(t)] = R_X(0)
+    & = \frac{1}{2}E[\cos (2 \pi (t - t)) + \cos (4\pi t + 2\theta)]\\
+    & = \frac{1}{2}E[1 + \cos (2\theta)] \\
+    \shortintertext{On interval $0\leq u \leq 1.5$:}
+    \frac{1}{2}E[1 + \cos (2\theta)]
+    & = \df{1}{2} + \df{1}{4\pi}\int_0^{1.5}\cos (2\theta) d\theta \\
+    & = \df{1}{2} + \df{1}{4\pi}\left[ \df{\sin(2\theta)}{2} \right]_0^{1.5}
+      = \df{1}{2} + \df{1}{4\pi}\left[ \df{\sin(3)}{2} \right]
+      \approx 0.505615 \\
+    \shortintertext{On interval $1.5\leq u \leq 27$:}
+    & = \df{1}{2} + \df{1}{4\pi}\int_{1.5}^{27}\cos (2\theta) d\theta \\
+    & = \df{1}{2} + \df{1}{4\pi}\left[ \df{\sin(2\theta)}{2} \right]_{1.5}^{27}
+      = \df{1}{2} + \df{1}{4\pi}\left[ \df{\sin(54)- sin(3)}{2} \right]
+      \approx 0.472152
+  \end{align*}
+
+  \textbf{Answer for (2)}\\
+  Since $\Theta$ is uniform, thus it's time invariant. So $X(t)$ should be SSS as well. \\
+
+
+  \textbf{Answer for (3)}\\
+  In this case, $$\frac{1}{T} \int_0^T X(t) dt$$ doesnt not necessarily
+  goes to 0 as $T \rightarrow \infty$, so it's not mean ergodic.\\

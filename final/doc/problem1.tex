@@ -1,0 +1,18 @@
+\textbf{1.} Let the second characteristic function of a random variable $X$ be
+  $$ \Psi_X (u ) = a + bu + cu^2 + u^{10} .$$
+  Given the mean, $\mu$, and the variance, $\sigma^2$, what are the values of $a$, $b$, and $c$?\\
+
+  \textbf{Solution:}\\
+
+  \begin{align*}
+    \Psi_X(0) & = 0 = a\\
+            a & = 0 \\
+    \df{d}{du} \Psi_X(0) & = -j2\pi \mu = b + 2cu + 10u^9|_{u=0} \\
+    b & = -j2\pi \mu \\
+    \sigma_X^2 & = \df{-1}{(2\pi)^2} \left( \df{d}{du} \right)^2 \Psi_X(0) \\
+              & = 2c + 90u^8|_{u=0} \\
+            c & = \df{\sigma_X^2}{2}
+  \end{align*}
+
+
+
