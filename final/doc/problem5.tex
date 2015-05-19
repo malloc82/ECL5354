@@ -2,19 +2,43 @@
   $$ R_V (\tau ) = 10 \; \exp(-|\tau|)\mbox{ volt}^2.$$
   Time $t$ is measured in seconds and frequency $f$ in Hertz. We are going to analyze this voltage source in three different scenarios.
   \begin{enumerate}
-  \item $V(t)$ is applied across a 5 ohm resister. What is the average power dissipated by the resister?
-
+  \item $V(t)$ is applied across a 5 ohm resister. What is the average power dissipated by the resister?\\
+    \textbf{Answer:}\\
+    \begin{align*}
+      \shortintertext{Power density:}
+      \ol{P} & = R_V(0) = 10 \exp(-0) = 10 \\
+      \shortintertext{Power over 5 $\Omega$:}
+      P_{5\Omega} & = 5 \times \ol{P} = 50
+    \end{align*}
 
   \item  The voltage $V(t)$ is applied across a series connection of a 2 ohm resistance and a one farad capacitor. Call the voltage across the resister $U(t)$.
     \begin{enumerate}
-    \item What is the power spectral density of $U(t)$?
+    \item What is the power spectral density of $U(t)$? \\
+      \begin{align*}
+        S_V(f) & = \int_{-\infty}^{\infty} R_V(\tau) e^{-j 2\pi s \tau} d\tau = \df{20}{1 + 4\pi^2f^2} \\
+        H(f) & = \df{RC}{1 + RC} = \df{2}{1 + 2} = \df{2}{3} \\
+        S_R(f) & = S_v(f) \left| H (f) \right|^2 = \df{20}{1 + 4\pi^2f^2} \df{4}{9} = \df{80}{9 + 36\pi^2f^2}
+      \end{align*} $\hfill\blacksquare$
 
-    \item What is the autocorrelation of the noise across the resister?
+    \item What is the autocorrelation of the noise across the resister?\\
+      \begin{align*}
+        R_R(\tau) & = \int_{-\infty}^{\infty} S_R(f) e^{j2\pi f} df = \df{40}{9} e^{-|\tau|}
+      \end{align*}
 
     \item What is the average power dissipated by the resister?
-
+      \begin{align*}
+        \ol{P} & = R_R(0) = \df{40}{9} \\
+        P_{2\Omega} & = 2\ol{P} = \df{20}{3}
+      \end{align*}
 
     \end{enumerate}
-  \item The voltage $V(t)$ is passed through a low pass voltage filter that discards all frequency components higher that 4 Hertz and keeps the rest. The voltage at the filter output is applied across a four ohm resister. What power is dissipated by the resister?
+  \item The voltage $V(t)$ is passed through a low pass voltage filter that discards all frequency components higher that 4 Hertz and keeps the rest. The voltage at the filter output is applied across a four ohm resister. What power is dissipated by the resister? \\
+    \begin{align*}
+      S_V(f) & = \int_{-\infty}^{\infty}R_v(\tau) e^{-j 2\pi f \tau} d\tau = \df{20}{1 + 4\pi^2f^2} \\
+      \shortintertext{Low pass with cutoff frequency at 4 HZ:}
+      \ol{P} & = \left. \int_{-4}^{4}S_v(f) e^{j 2\pi f \tau} df \right|_{\tau = 0}
+               = \int_{-4}^{4} \df{20}{1 + 4\pi^2f^2} df \approx 9.7468 \\
+      P_{low pass + 4 \Omega} & = 4 \ol{P} = 38.9872
+    \end{align*}
   \end{enumerate}
 

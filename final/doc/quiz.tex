@@ -5,11 +5,34 @@ Grading is binary. Either 4 points for a correct solution or zero.
 \begin{enumerate}
 \item
   Let $X$ and $Y$ be i.i.d. random variables distributed as
-  $$ f_X(x) = f_X(x) = e^{-x} \mu (x)$$
+  $$ f_X(x) = f_Y(x) = e^{-x} \mu (x)$$
   Find $f_Z (x)$ if
   \begin{enumerate}
-  \item $Z=-X-Y$.
-  \item $Z=\frac{X}{Y}$
+  \item $Z=-X-Y$. \\
+    \textbf{Solution:}\\
+    \begin{align*}
+      F_z(z) & = P\{-x-y \leq z\} = \int_{y=-\infty}^{\infty} \int_{x=-\infty}^{-z-y} f_{xy}(x, y) dx dy \\
+      f_z(z) & = \df{\partial F_z(z)}{\partial z}
+               = \int_{-\infty}^{\infty} \left( \df{\p}{\p z} \int_{x=-\infty}^{-z-y} f_{xy}(x, y) dx \right) dy \\
+             & = - \int_{-\infty}^{\infty} f_{xy}(- z - y, y) dy
+      \shortintertext{Since $x$ $y$ are independent:}
+      f_{xy}(x, y) & = f_x(x)f_y(y) \\
+      \shortintertext{So, we have:}
+      f_z(z) & = - \int_{-\infty}^{\infty} f_x( - z -y)f_y(y) dy \\
+             & = -\int_{-\infty}^{\infty} e^{-z-y}e^{y}\mu(-z -y)\mu(y) dy = 0
+    \end{align*}
+  \item $Z=\df{X}{Y}$
+    \begin{align*}
+      F_z(z) & = P\left\{ \df{x}{y} \leq z \right\}
+               = P\left\{ \df{x}{y} \leq z, y > 0 \right\} + P\left\{ \df{x}{y} \leq z, y < 0 \right\} \\
+             & = \int_{y=0}^{\infty} \int_{x=-\infty}^{yz} f_{xy}(x, y) dx dy
+               + \int_{y=0}^{\infty} \int_{x=-\infty}^{yz} f_{xy}(x, y) dx dy \\
+      f_z(z) & = \int_{0}^{\infty}yf_{xy}(yz, y) dy + \int_{-\infty}^0 -yf_{xy}(yz, y) dy \\
+             & = \int_{-\infty}^{\infty} |y| f_{xy}(yz, y) dy
+               = \int_{-\infty}^{\infty} |y| f_x(yz)f_y(y) dy \\
+             & = \int_{-\infty}^{\infty} |y| e^{-zy}\mu(zy) e^{-y}\mu(y) dy
+               = \int_{-\infty}^{\infty} |y| e^{(-z-1)y} \mu(y) dy
+    \end{align*}
   \end{enumerate}
 \end{enumerate}
 
